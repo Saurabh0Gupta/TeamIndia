@@ -1,0 +1,19 @@
+import { useState } from 'react';
+import React from 'react';
+import Card from './Components/Card'
+import Top from './Components/Top'
+const App = () => {
+  const [photo, setphoto] = useState([{name:"Rohit Sharma",image:'https://imgs.search.brave.com/xecP6fBy-L8FvnFfT0wnzNfJxGf5gpcpEVZNlaVWgtA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8xLzFlL1By/aW1lX01pbmlzdGVy/X09mX0JoYXJhdF9T/aHJpX05hcmVuZHJh/X0RhbW9kYXJkYXNf/TW9kaV93aXRoX1No/cmlfUm9oaXRfR3Vy/dW5hdGhfU2hhcm1h/XyUyOENyb3BwZWQl/MjkuanBnLzUxMnB4/LVByaW1lX01pbmlz/dGVyX09mX0JoYXJh/dF9TaHJpX05hcmVu/ZHJhX0RhbW9kYXJk/YXNfTW9kaV93aXRo/X1NocmlfUm9oaXRf/R3VydW5hdGhfU2hh/cm1hXyUyOENyb3Bw/ZWQlMjkuanBn'},{name:"Virat Kohli",image:'https://imgs.search.brave.com/UDaghDTSVcUkRLzrB2Jnn4jwG38wf-f20GjW62O9CF0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy85/LzliL1ZpcmF0X0tv/aGxpX2luX1BNT19O/ZXdfRGVsaGkuanBn'},{name:"Yujvendra Chahal", image:'https://imgs.search.brave.com/V1J5HRFt9bU2opoyMn2sUVauGB9Cx4bmXpZ5cQMBk9w/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2RmL1l1enZlbmRy/YV9DaGFoYWxfaW5f/UE1PX05ld19EZWxo/aS5qcGc'},{name:"Arshdeep Singh",image:'https://imgs.search.brave.com/Ux2oJdiD168GPNrDnJssMWTnYS-5rYnN4L2uQdFRjZA/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8z/LzM2L1ByaW1lX01p/bmlzdGVyX09mX0Jo/YXJhdF9TaHJpX05h/cmVuZHJhX0RhbW9k/YXJkYXNfTW9kaV93/aXRoX0Fyc2hkZWVw/X1NpbmdoX0ZhbWls/eV8lMjhDcm9wcGVk/JTI5LmpwZw'},{name:'Hardik Pandya',image:'https://imgs.search.brave.com/MMCt0okPnl5EBv9s420Zy0zpvrR1lf_E0rafnUKUj-4/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9m/L2ZjL0hhcmRpa19Q/YW5keWFfaW5fUE1P/X05ld19EZWxoaS5q/cGc'},{name:'Kuldeep Yadav',image:'https://imgs.search.brave.com/apxZHpcMCjKvKx7ZWsh0Zn7FQAwFMxm69p4k_bb_fdM/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy85/LzkxL0t1bGRlZXBf/WWFkYXZfaW5fUE1P/X05ld19EZWxoaS5q/cGc'},{name:'Ravindra Jadeja',image:'https://imgs.search.brave.com/PFEIK6Hrc0cm5iqU0qa1IKw7zjC5ssM5KB0zRiOnUCw/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8y/LzJjL1BNX1Nocmlf/TmFyZW5kcmFfTW9k/aV93aXRoX1Jhdmlu/ZHJhX0phZGVqYV8l/MjhDcm9wcGVkJTI5/LmpwZw'},{name:'Shivam Dube',image:'https://imgs.search.brave.com/IfrByCydv9_sL2ekQjC1EiplaRrdTpVYv3I3GZNvXIA/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy82/LzYzL1NoaXZhbV9E/dWJlX2luX1BNT19O/ZXdfRGVsaGkuanBn'},{name:'Suryakumar Yadav',image:'https://imgs.search.brave.com/WsY-zzWmtYAQHZYckuzRJm-N44pcaugffgbhvGS-giw/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I3L1N1cnlha3Vt/YXJfWWFkYXZfaW5f/UE1PX05ld19EZWxo/aS5qcGc'},{name:'Axar Pate',image:'https://imgs.search.brave.com/SMGymAAKq3_mT3xPJezt8zvqYKSYxjTtVStuvxGmjtI/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9h/L2FkL0F4YXJfUGF0/ZWxfaW5fUE1PX05l/d19EZWxoaS5qcGc'},{name:'Rishabh Pant',image:'https://imgs.search.brave.com/7v-fVQcIamk7VDrmHbSseK2M4S8ksbv-tuFw34e5o6g/rs:fit:560:320:1:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8w/LzBjL1ByaW1lX01p/bmlzdGVyX09mX0Jo/YXJhdF9TaHJpX05h/cmVuZHJhX01vZGlf/d2l0aF9SaXNoYWJo/X1BhbnQuanBn'}])
+  return (
+    <div className='w-full min-h-screen bg-slate-200 flex flex-col items-center pt-10'>
+      <h1 className='text-slate-800 text-4xl font-bold text-center mb-3'>We won the match!</h1>
+      <Top/>
+      <div className='w-full lg:grid lg:grid-cols-3 gap-10 mt-4 lg:px-10'>
+      {photo.map((url, index) => (
+          <Card key={index} imgUrl={url.image} name={url.name}/>
+        ))}
+      </div>
+    </div>
+  )
+}
+export default App
